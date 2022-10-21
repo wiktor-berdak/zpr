@@ -14,6 +14,11 @@ import java.util.Set;
 @Entity
 public class Sector {
 
+    public Sector(String name, Set<Animal> animals) {
+        this.name = name;
+        this.animals = animals;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
