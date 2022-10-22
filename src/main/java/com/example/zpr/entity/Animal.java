@@ -20,6 +20,7 @@ public class Animal {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ANIMAL_ID")
     private long id;
 
     private String name;
