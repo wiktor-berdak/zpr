@@ -29,8 +29,7 @@ public class Animal {
 
     @Enumerated(value = EnumType.STRING)
     private AnimalType type;
-
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.DETACH)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "sector_id")
     private Sector sector;
 }

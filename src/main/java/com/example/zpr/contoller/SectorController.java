@@ -1,13 +1,16 @@
 package com.example.zpr.contoller;
 
 import com.example.zpr.Report;
+import com.example.zpr.entity.Animal;
 import com.example.zpr.entity.Sector;
 import com.example.zpr.service.SectorService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.Map;
 
 @RestController
 public class SectorController {

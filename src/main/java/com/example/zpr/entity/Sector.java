@@ -1,7 +1,9 @@
 package com.example.zpr.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
@@ -12,6 +14,7 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@EqualsAndHashCode
 public class Sector {
 
     public Sector(String name, Set<Animal> animals) {
@@ -24,9 +27,8 @@ public class Sector {
     @Column(name = "SECTOR_ID")
     private long id;
 
-    @Column(unique=true)
     private String name;
-
-    @OneToMany(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
+    @JsonIgnore
+    @OneToMany(cascade = CascadeType.DETACH, fetch = FetchType.LAZY, mappedBy = "sector")
     private Set<Animal> animals = new HashSet<>();
 }

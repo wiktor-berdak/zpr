@@ -27,8 +27,8 @@ public class AnimalController {
         animalService.save(animal);
     }
 
-    @GetMapping("/animals/sector/{id}")
-    public List<Animal> getAllAnimalsBySectorId(@PathVariable Long id) {
-        return animalService.findAllBySectorId(id);
+    @GetMapping("/animals/sector/{name}")
+    public List<Animal> getAllAnimalsBySectorId(@PathVariable String name) {
+        return animalService.findAllBySectorName(name);
     }
 }
