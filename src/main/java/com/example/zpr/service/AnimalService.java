@@ -24,25 +24,30 @@ public class AnimalService {
     }
 
     public void save(Animal animal) {
-        if (Objects.isNull(animal.getName()) || Objects.isNull(animal.getSector()) || Objects.isNull(animal.getType())) {
+        if (Objects.isNull(animal.getName()) || Objects.isNull(animal.getSector().getName()) || Objects.isNull(animal.getType())) {
             throw new IllegalArgumentException("Name, sector and type can not be null.");
         }
 
         String name = animal.getName().toLowerCase();
         animal.setName(name);
 
-        if (findByName(name) != null) {
-            boolean isSectorsEquals = findByName(name).getSector().getName().equals(animal.getSector().getName());
-            boolean isTypesEquals = animal.getType().equals(findByName(name).getType());
-            if (isSectorsEquals && isTypesEquals) {
-                throw new IllegalArgumentException("This animal already exists in this sector.");
+        List<Animal> allAnimalsByName = animalRepository.findAllAnimalsByName(name);
+        if(allAnimalsByName.size() > 0){
+            for (Animal animalFromList: allAnimalsByName) {
+                boolean isSectorsEquals = animalFromList.getSector().getName().equals(animal.getSector().getName());
+                boolean isTypesEquals = animalFromList.getType().equals(animal.getType());
+                if (isSectorsEquals && isTypesEquals) {
+                    throw new IllegalArgumentException("This animal already exists in this sector.");
+                }
             }
         }
+
         animal.setKarmaUnits(animal.getType().getKarmaUnits());
 
         String sectorName = animal.getSector().getName().toLowerCase();
         Sector sector = sectorRepository.findByName(sectorName);
         animal.setSector(sector);
+
         animalRepository.save(animal);
     }
 

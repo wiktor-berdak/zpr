@@ -22,7 +22,6 @@ public class Animal {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ANIMAL_ID")
     private long id;
-
     private String name;
 
     private int karmaUnits;
