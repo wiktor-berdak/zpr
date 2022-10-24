@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Objects;
 
 @Service
@@ -51,16 +52,14 @@ public class AnimalService {
         animalRepository.save(animal);
     }
 
-    public Animal findByName(String name) {
-        name = name.toLowerCase();
-        return animalRepository.findByName(name);
-    }
-
     public List<Animal> findAllAnimalsByName(String name) {
         return new ArrayList<>(animalRepository.findAllAnimalsByName(name));
     }
 
     public List<Animal> findAllBySectorName(String name) {
+        if(sectorRepository.findByName(name) == null){
+            throw new NoSuchElementException("There is no sector with this name.");
+        }
         return new ArrayList<>(animalRepository.findAllAnimalsWithSectorName(name));
     }
 }

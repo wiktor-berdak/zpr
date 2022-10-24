@@ -1,4 +1,4 @@
-package com.example.zpr.entity;
+package com.example.zpr;
 
 public enum AnimalType {
     ELEPHANT(20), LION(11), RABBIT(4);

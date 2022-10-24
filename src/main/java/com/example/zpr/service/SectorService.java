@@ -1,14 +1,11 @@
 package com.example.zpr.service;
 
 import com.example.zpr.Report;
-import com.example.zpr.entity.Animal;
 import com.example.zpr.entity.Sector;
 import com.example.zpr.repository.SectorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 @Service
@@ -39,10 +36,10 @@ public class SectorService {
     }
 
     public Report getReportWhichSectorNeedsTheMostFood() {
-        return new Report(new ArrayList<>(sectorRepository.getReportWhichSectorNeedsTheMostFood()));
+        return new Report(sectorRepository.getReportWhichSectorNeedsTheMostFood());
     }
 
     public Report getReportInWhichSectorIsTheLeastAnimals() {
-        return new Report(new ArrayList<>(sectorRepository.getReportInWhichSectorIsTheLeastAnimals()));
+        return new Report(sectorRepository.getReportInWhichSectorIsTheLeastAnimals());
     }
 }

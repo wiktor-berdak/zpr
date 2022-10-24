@@ -14,5 +14,4 @@ public interface AnimalRepository extends JpaRepository<Animal, Long> {
     @Query(value = "SELECT * FROM ANIMAL WHERE NAME=?1", nativeQuery = true)
     List<Animal> findAllAnimalsByName(String name);
 
-    Animal findByName(String name);
 }

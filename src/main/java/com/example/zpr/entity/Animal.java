@@ -1,5 +1,6 @@
 package com.example.zpr.entity;
 
+import com.example.zpr.AnimalType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -29,6 +30,6 @@ public class Animal {
     @Enumerated(value = EnumType.STRING)
     private AnimalType type;
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "sector_id")
+    @JoinColumn(name = "SECTOR_ID")
     private Sector sector;
 }

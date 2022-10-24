@@ -2,15 +2,14 @@ package com.example.zpr;
 
 import lombok.Data;
 
-import java.util.List;
 import java.util.Map;
 
 @Data
 public class Report {
 
-    public Report(List<Map<Integer, Long>> report) {
+    public Report(Map<Long, Integer> report) {
         this.report = report;
     }
 
-    List<Map<Integer, Long>> report;
+    Map<Long, Integer> report;
 }
